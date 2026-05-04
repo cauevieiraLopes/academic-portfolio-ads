@@ -1,22 +1,22 @@
-# 📚 Analisador de Legibilidade (Índice Coleman-Liau)
+# 📚 Analisador de Legibilidade (Índice Coleman-Liau) - Versão Refatorada
 
 Este projeto é uma implementação do problema **"Readability"** do curso **CC50** (Harvard CS50), desenvolvido para aplicar conceitos de processamento de texto e algoritmos de análise linguística no curso de ADS do **SENAI CIMATEC**.
 
 ## 📖 Descrição
-O programa calcula o nível de escolaridade necessário para compreender um determinado texto através do **Índice Coleman-Liau**. O algoritmo analisa a quantidade de letras, palavras e frases para aplicar uma fórmula matemática que retorna o "Grade" (série escolar) correspondente.
+O programa calcula o nível de escolaridade necessário para compreender um determinado texto através do **Índice Coleman-Liau**. O algoritmo analisa a densidade de letras e frases em relação ao número de palavras para aplicar a fórmula:
 
-A fórmula utilizada é:
 $$index = 0.0588 \times L - 0.296 \times S - 15.8$$
-Onde **L** é a média de letras por 100 palavras e **S** é a média de frases por 100 palavras.
+
+Esta versão foi refatorada para utilizar funções nativas da biblioteca padrão do C++, tornando o código mais eficiente e profissional.
 
 ## 🛠️ Tecnologias e Conceitos Aplicados
 - **Linguagem:** C++
-- **Conceitos de Programação:**
-  - **Processamento de Strings:** Uso de `std::getline` e conversão de strings para `std::vector<char>` para análise granular.
-  - **Lógica de Análise de Texto:** Identificação de sentenças através de pontuações específicas (`.`, `!`, `?`) e contagem de palavras baseada em espaços.
-  - **Tratamento de Edge Cases:** Implementação de lógica adicional para garantir a contagem correta da primeira/única palavra do texto (ajuste de contagem de espaços).
-  - **Matemática Computacional:** Uso da biblioteca `<cmath>` para arredondamento de resultados e aplicação de fórmulas de precisão com tipos `double`.
-  - **Modularização:** Divisão clara entre entrada de dados, processamento lógico, cálculo matemático e exibição de resultados.
+- **Refatoração e Boas Práticas:**
+  - **Uso de `<cctype>`:** Implementação das funções `isalpha()` e `isspace()` para validação de caracteres, substituindo verificações manuais extensas.
+  - **Otimização de Memória:** Iteração direta sobre a `std::string`, eliminando a necessidade de containers adicionais (vetores de caracteres).
+  - **Tratamento de Edge Cases:** Lógica aprimorada para contabilizar a primeira palavra do texto através da verificação de string não vazia (`texto.empty()`).
+  - **Matemática e Arredondamento:** Uso de `std::round` da biblioteca `<cmath>` para garantir que o resultado final da série escolar (Grade) seja um inteiro preciso.
+  - **Modularização:** Separação clara de responsabilidades entre as funções `verificarTexto` e `indice`.
 
 ## 🚀 Como Executar
 1. Certifique-se de ter um compilador C++ instalado (como g++).
